@@ -23,11 +23,17 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 9010,
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        // proxy all webpack dev-server requests starting with /api to our Spring Boot backend (localhost:8088)
+        '/ajax': {
+          target: 'http://localhost:9010',
+          changeOrigin: true
+        }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

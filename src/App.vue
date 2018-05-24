@@ -12,13 +12,13 @@
           value="true"
           v-for="(item, i) in items"
           :key="i"
-          exact
+          :to="{path: item.path}"
         >
           <v-list-tile-action>
-            <v-icon light v-html="item.icon"></v-icon>
+            <v-icon v-html="icons[i%16]"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
+            <v-list-tile-title v-text="item.name"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -78,10 +78,8 @@
         cordova: Vue.cordova,
         clipped: false,
         drawer: true,
-        items: [{
-          icon: 'bubble_chart',
-          title: 'Inspire'
-        }],
+        icons: ['home','table_chart','share','whatshot','thumb_up_alt','cake','bubble_chart','domain','group','mood','notifications','pages','people','person','plus_one','poll'],
+      	items: this.$router.options.routes,
         miniVariant: false,
         right: true,
         rightDrawer: false,

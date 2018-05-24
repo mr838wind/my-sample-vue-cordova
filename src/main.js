@@ -9,6 +9,14 @@ import VueHead from 'vue-head'
 import App from './App'
 import router from './router'
 
+import _ from 'lodash'  // util  
+import AjaxUtils from './utils/AjaxUtils.js' // custom util 
+
+// global usage:
+Vue.prototype.$AjaxUtils = AjaxUtils
+Vue.prototype.$_ = _
+
+
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 Vue.use(VueCordova)
